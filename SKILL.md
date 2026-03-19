@@ -26,22 +26,34 @@ When reading the conversation:
 
 Output format:
 - line 1 must be the final title only
-- line 2 onward must be an unordered list
-- each bullet must represent exactly one user turn and the llm response to that same turn
-- do not merge multiple user turns into one bullet
-- do not merge multiple llm responses into one bullet
+- line 2 onward must be an ordered list
+- each numbered item must represent exactly one user turn and the llm response to that same turn
 - preserve the original chronological order strictly
-- each bullet must explicitly use this pattern: `- User: ...；LLM: ...`
-- each bullet must summarize only that turn pair
-- keep each bullet concise but specific
+- do not merge multiple user turns into one numbered item
+- do not merge multiple llm responses into one numbered item
+- each numbered item must contain exactly two unordered sub-bullets in this order: User then LLM
+- markdown layout requirements (to avoid extra blank lines):
+  - write the first unordered bullet on the SAME LINE as the ordered-list marker
+  - indent the second unordered bullet under the first (3 spaces or a tab)
+  - do not insert any blank lines inside the ordered list (no blank line after `1.` and no blank line between User/LLM)
+- each numbered item must summarize only that turn pair
+- keep each User/LLM sub-bullet concise but specific
 - include key requests, corrections, decisions, and outputs from that turn
 - do not omit turns unless the user turn has no meaningful content and the llm response also adds no meaningful content
-- if a user turn changes direction, make that change explicit in that bullet
+- if a user turn changes direction, make that change explicit in the User sub-bullet
 - do not add any text before the title
-- do not add any text after the bullet list
+- do not add any text after the ordered list
 - do not add quotes around the title
 - do not add headings such as Summary, Timeline, or Recap
-- do not add explanation outside the bullet list
+- do not add explanation outside the ordered list
+
+Example structure:
+
+<Title>
+1. - User: ...
+   - LLM: ...
+2. - User: ...
+   - LLM: ...
 
 Title requirements:
 - make the title specific, compact, searchable, and easy to scan
@@ -67,18 +79,25 @@ Examples:
 Conversation focus: packaging a "topic rename + strict recap" formatter as a skill
 Output:
 对话标题与逐轮回顾 Skill 打包
-- User: 提供 SKILL.md 草案并询问如何安装；LLM: 说明技能结构与安装路径
-- User: 询问发布与本地安装；LLM: 给出 GitHub 发布与 Codex CLI 安装步骤
+1. - User: 提供 SKILL.md 草案并询问如何安装
+   - LLM: 说明技能结构与安装路径
+2. - User: 询问发布与本地安装
+   - LLM: 给出 GitHub 发布与 Codex CLI 安装步骤
 
 Conversation focus: debugging a failing OAuth callback in a Next.js app
 Output:
 Fix Next.js OAuth Callback Failure
-- User: 提供 OAuth 回调失败日志；LLM: 初步定位可能原因
-- User: 补充 Next.js 场景与报错细节；LLM: 收敛到回调处理链路问题
-- User: 要求修复方向；LLM: 给出针对性的修复建议
+1. - User: 提供 OAuth 回调失败日志
+   - LLM: 初步定位可能原因
+2. - User: 补充 Next.js 场景与报错细节
+   - LLM: 收敛到回调处理链路问题
+3. - User: 要求修复方向
+   - LLM: 给出针对性的修复建议
 
 Conversation focus: comparing skills and subagents for a repository workflow
 Output:
 Claude Code Skills vs Subagents
-- User: 想比较 skills 和 subagents 在仓库工作流中的区别；LLM: 概述两者定位
-- User: 追问适用场景与取舍；LLM: 给出针对仓库流程的对比结论
+1. - User: 想比较 skills 和 subagents 在仓库工作流中的区别
+   - LLM: 概述两者定位
+2. - User: 追问适用场景与取舍
+   - LLM: 给出针对仓库流程的对比结论

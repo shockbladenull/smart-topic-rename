@@ -1,10 +1,11 @@
 interface:
-  display_name: "Smart Topic Rename"
-  short_description: "对话标题 + 逐轮回顾"
-  icon_small: "./assets/icon_small.svg"
-  icon_large: "./assets/icon_large.svg"
-  brand_color: "#3B82F6"
-  default_prompt: "为当前对话生成高信号标题，并输出严格逐轮回顾。"
-
+  display_name: Smart Topic Rename
+  short_description: 对话标题 + 逐轮回顾
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+  brand_color: '#3B82F6'
+  default_prompt: 为当前对话生成高信号标题，并输出严格逐轮回顾。
 policy:
   allow_implicit_invocation: true
+  products:
+  - chatgpt
