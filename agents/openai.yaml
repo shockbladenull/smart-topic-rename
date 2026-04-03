@@ -5,7 +5,3 @@ interface:
   icon_large: assets/icon.svg
   brand_color: '#3B82F6'
   default_prompt: 为当前对话生成高信号标题，并输出严格逐轮回顾。
-policy:
-  allow_implicit_invocation: true
-  products:
-  - chatgpt
